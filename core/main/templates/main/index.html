@@ -1,0 +1,250 @@
+{% extends 'base.html' %}
+{% block content %}
+  <!-- slider section -->
+  <section class="slider_section position-relative">
+    {% for i in slider_list %}
+    <div class="slider_bg_box">
+      <img src="{{ i.img.url }}" alt="">
+    </div>
+    <div class="slider_bg"></div>
+    <div class="container">
+      <div class="col-md-9 col-lg-8">
+        <div class="detail-box">
+          <h1>
+            {{ i.name }}
+            <br> {{ i.name1 }}
+          </h1>
+          <p>
+            {{ i.text }}
+          </p>
+          <div>
+            <a href="{% url 'Shop' %}" class="slider-link">
+              Shop Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </section>
+  <!-- end slider section -->
+
+  <!-- shop section -->
+
+  <section class="shop_section layout_padding">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          Latest Products
+        </h2>
+      </div>
+      <div class="row">
+        {% for i in prod_list %}
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="box">
+            <a href="">
+              <div class="img-box">
+                <img src="{{ i.img.url }}" alt="">
+              </div>
+              <div class="detail-box">
+                <h6>
+                  {{ i.name }}
+                </h6>
+                <h6>
+                  Price
+                  <span>
+                    ${{ i.price }}
+                  </span>
+                </h6>
+              </div>
+              {% if i.new %}
+              <div class="new">
+                <span>
+                  New
+                </span>
+              </div>
+              {% endif %}
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="btn-box">
+        <a href="{% url 'Shop' %}">
+          View All Products
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- end shop section -->
+
+  <!-- about section -->
+
+  <section class="about_section  ">
+    <div class="container">
+      <div class="row">
+        {% for i in about_list %}
+        <div class="col-md-6">
+          <div class="img-box">
+            <img src="{{ i.img.url }}" alt="">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                {{ i.name }}
+              </h2>
+            </div>
+            <p>
+              {{ i.text }}
+            </p>
+            <a href="{% url 'About' %}">
+              {{ i.but_name }}
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- end about section -->
+
+  <!-- offer section -->
+
+  <section class="offer_section layout_padding">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-7 px-0">
+          {% for i in offer_list %}
+          <div class="box offer-box1">
+            <img src="{{ i.img.url }}" alt="">
+            <div class="detail-box">
+              <h2>
+                Upto {{ i.name }}% Off
+              </h2>
+              <a href="{% url 'Shop' %}">
+                Shop Now
+              </a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        
+        <div class="col-md-5 px-0">
+          {% for i in offer_s_list %}
+          <div class="box offer-box2">
+            <img src="{{ i.img.url }}" alt="">
+            <div class="detail-box">
+              <h2>
+                Upto {{ i.name }}% Off
+              </h2>
+              <a href="{% url 'Shop' %}">
+                Shop Now
+              </a>
+            </div>
+          </div>
+          
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- end offer section -->
+
+  <!-- blog section -->
+
+  <section class="blog_section ">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Latest From Blog
+        </h2>
+      </div>
+      <div class="row">
+        {% for i in blog_list %}
+        <div class="col-md-6">
+          <div class="box">
+            <div class="img-box">
+              <img src="{{ i.img.url }}" alt="">
+              <h4 class="blog_date">
+                {{ i.name1 }} <br>
+                {{ i.name }}
+              </h4>
+            </div>
+            <div class="detail-box">
+              <h5>
+                {{ i.title }}
+              </h5>
+              <p>
+                {{ i.text }}
+              </p>
+              <a href="{% url 'Blog' %}">
+                Read More
+              </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- end blog section -->
+
+  <!-- client section -->
+
+  <section class="client_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Testimonial
+        </h2>
+      </div>
+      <div id="carouselExample2Controls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          {% for i in client_list %}
+          <div class="carousel-item active">
+            <div class="row">
+              <div class="col-md-11 col-lg-10 mx-auto">
+                <div class="box">
+                  <div class="img-box">
+                    <img src="{{ i.img.url }}" alt="" />
+                  </div>
+                  <div class="detail-box">
+                    <div class="name">
+                      <h6>
+                        {{ i.name }}
+                      </h6>
+                    </div>
+                    <p>
+                     {{ i.text }}
+                    </p>
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="carousel_btn-container">
+          <a class="carousel-control-prev" href="#carouselExample2Controls" role="button" data-slide="prev">
+            <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExample2Controls" role="button" data-slide="next">
+            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end client section -->
+
+{% endblock %}
